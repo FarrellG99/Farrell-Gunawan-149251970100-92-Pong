@@ -5,6 +5,7 @@ using UnityEngine;
 public class GerakanBola : MonoBehaviour
 {
     public Vector2 speed;
+    public Vector3 resetPosition;
 
     private Rigidbody2D rig;
 
@@ -18,6 +19,17 @@ public class GerakanBola : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(rig.velocity.x.ToString());
+    }
+
+    public void ResetBall(){
+        transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
+        //Merubah arah bola dan mengembalikan Bola ke kecepatan normal layaknya awal permainan
+        if (rig.velocity.x < 0){
+            rig.velocity = new Vector2(speed.x * -1, speed.y);
+        }else if (rig.velocity.x > 0){
+            rig.velocity = new Vector2(speed.x * 1, speed.y);
+        }
         
     }
 }
