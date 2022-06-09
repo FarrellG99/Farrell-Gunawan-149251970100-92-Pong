@@ -13,4 +13,8 @@ public class MainMenuController : MonoBehaviour
     public void OpenAuthor(){
         Debug.Log("Created By Farrell Gunawan - 149251970100-92");
     }
+
+    public void QuitGame(){
+        Application.Quit();
+    }
 }
