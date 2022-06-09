@@ -19,7 +19,7 @@ public class GerakanBola : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(rig.velocity.x.ToString());
+        
     }
 
     public void ResetBall(){
