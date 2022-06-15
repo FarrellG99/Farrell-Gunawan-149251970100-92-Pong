@@ -14,6 +14,14 @@ public class MainMenuController : MonoBehaviour
         Debug.Log("Created By Farrell Gunawan - 149251970100-92");
     }
 
+    public void OpenCredit(){
+        SceneManager.LoadScene("Credit");
+    }
+
+    public void BackToMainMenu(){
+        SceneManager.LoadScene("Main Menu");
+    }
+
     public void QuitGame(){
         Application.Quit();
     }

@@ -20,7 +20,7 @@ public class PUSpeedUpController : MonoBehaviour
 
     void Update() {
         timer += Time.deltaTime;
-        if (timer > manager.DeleteInterval)
+        if (timer >= manager.DeleteInterval)
         {
             Debug.Log("OK");
             manager.RemovePowerUp(gameObject);

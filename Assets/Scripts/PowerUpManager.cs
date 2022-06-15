@@ -13,6 +13,12 @@ public class PowerUpManager : MonoBehaviour
     public List<GameObject> powerUpTemplateList;
     private List<GameObject> powerUpList;
 
+    public bool doneleftScale = false;
+    public bool donerightScale = false;
+
+    public bool doneleftSpeed = false;
+    public bool donerightSpeed = false;
+
     private float timer;
 
     //DeleteInterval berfungsi untuk mengatur berapa lama waktu dari PowerUp, apabila sudah mencapai waktu maka PowerUp akan dihapus;

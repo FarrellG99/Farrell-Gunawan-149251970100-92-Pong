@@ -50,4 +50,12 @@ public class PaddleController : MonoBehaviour
     private void MoveObject(Vector2 movement){
         rig.velocity = movement;
     }
+
+    public void SpeedUpPad(){
+        speed *= 2;
+    }
+
+    public void ResetSpeedPad(){
+        speed /= 2;
+    }
 }
