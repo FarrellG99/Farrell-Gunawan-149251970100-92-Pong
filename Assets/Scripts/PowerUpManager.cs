@@ -13,11 +13,23 @@ public class PowerUpManager : MonoBehaviour
     public List<GameObject> powerUpTemplateList;
     private List<GameObject> powerUpList;
 
-    public bool doneleftScale = false;
-    public bool donerightScale = false;
+    public GameObject ball;
+    public float ballMagnitude;
+    float BallSpeedDuration;
+    public bool activationBallSpeed;
 
-    public bool doneleftSpeed = false;
-    public bool donerightSpeed = false;
+    public GameObject padKiri;
+    public GameObject padKanan;
+
+    float durationScaleUpPadLeft;
+    float durationSpeedUpPadLeft;
+    float durationScaleUpPadRight;
+    float durationSpeedUpPadRight;
+
+    public bool activationScaleUpPadLeft = false;
+    public bool activationSpeedUpPadLeft = false;
+    public bool activationScaleUpPadRight = false;
+    public bool activationSpeedUpPadRight = false;
 
     private float timer;
 
@@ -35,6 +47,63 @@ public class PowerUpManager : MonoBehaviour
         {
             GenerateRandomPowerUp();
             timer -= spamInterval;
+        }
+
+        //Durasi Buff BallSpeedUp
+        if (activationBallSpeed == true)
+        {
+            if (BallSpeedDuration >= 5)
+            {
+                ball.GetComponent<GerakanBola>().DeactivationPUSpeedUp(ballMagnitude);
+                activationBallSpeed = false;
+                BallSpeedDuration -= 5;
+            }
+            BallSpeedDuration += Time.deltaTime;
+        }
+
+        //Durasi Buff ScalePadKiri
+        if (activationScaleUpPadLeft == true)
+        {
+            if (durationScaleUpPadLeft >= 5)
+            {
+                padKiri.GetComponent<PaddleController>().ScaleDown(padKiri);
+                activationScaleUpPadLeft = false;
+                durationScaleUpPadLeft -= 5;
+            }
+            durationScaleUpPadLeft += Time.deltaTime;
+        }
+        //Durasi Buff SpeedUp PadKiri
+        if (activationSpeedUpPadLeft == true)
+        {
+            if (durationSpeedUpPadLeft >= 5)
+            {
+                padKiri.GetComponent<PaddleController>().ResetSpeedPad();
+                activationSpeedUpPadLeft = false;
+                durationSpeedUpPadLeft -= 5;
+            }
+            durationSpeedUpPadLeft += Time.deltaTime;
+        }
+        //Durasi Buff ScalePadKanan
+        if (activationScaleUpPadRight == true)
+        {
+            if (durationScaleUpPadRight >= 5)
+            {
+                padKanan.GetComponent<PaddleController>().ScaleDown(padKanan);
+                activationScaleUpPadRight = false;
+                durationScaleUpPadRight -= 5;
+            }
+            durationScaleUpPadRight += Time.deltaTime;
+        }
+        //Durasi Buff SpeedUp PadKanan
+        if (activationSpeedUpPadRight == true)
+        {
+            if (durationSpeedUpPadRight >= 5)
+            {
+                padKanan.GetComponent<PaddleController>().ResetSpeedPad();
+                activationSpeedUpPadRight = false;
+                durationSpeedUpPadRight -= 5;
+            }
+            durationSpeedUpPadRight += Time.deltaTime;
         }
     }
 

@@ -6,8 +6,6 @@ public class PUScalePadUp : MonoBehaviour
 {
     public PowerUpManager manager;
     public Collider2D bola;
-    [SerializeField] GameObject padKiri;
-    [SerializeField] GameObject padKanan;
     public GerakanBola bolaa;
     
     float timer;
@@ -15,32 +13,17 @@ public class PUScalePadUp : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if (other == bola)
         {
-            Debug.Log("d : " + manager.doneleftScale);
             //donleft dan doneright digunakan untuk menghentikan penambahan dan mengembalikan value seperti semula pada paddle guna untuk memberikan gameplay yang lebih playable
-            if (bolaa.isLeft && !manager.doneleftScale)
+            if (bolaa.isLeft && !manager.activationScaleUpPadLeft)
             {
-                manager.doneleftScale = true;
-                padKiri.transform.localScale += new Vector3(0, padKiri.transform.localScale.y, 0);
+                manager.activationScaleUpPadLeft = true;
+                manager.padKiri.GetComponent<PaddleController>().ScaleUp(manager.padKiri);
                 manager.RemovePowerUp(gameObject);
             }
-            else if (bolaa.isLeft && manager.doneleftScale)
+            if (!bolaa.isLeft && !manager.activationScaleUpPadRight)
             {
-                manager.doneleftScale = false;
-                Debug.Log("b : " + manager.doneleftScale);
-                padKiri.transform.localScale -= new Vector3 (0,padKiri.transform.localScale.y/2,0);
-                manager.RemovePowerUp(gameObject);
-            }
-            
-            else if (!bolaa.isLeft && !manager.donerightScale)
-            {
-                manager.donerightScale = true;
-                padKanan.transform.localScale += new Vector3 (0,padKanan.transform.localScale.y,0);
-                manager.RemovePowerUp(gameObject);
-            }
-            else if (!bolaa.isLeft && manager.donerightScale)
-            {
-                manager.donerightScale = false;
-                padKanan.transform.localScale -= new Vector3 (0,padKanan.transform.localScale.y/2,0);
+                manager.activationScaleUpPadRight = true;
+                manager.padKanan.GetComponent<PaddleController>().ScaleUp(manager.padKanan);
                 manager.RemovePowerUp(gameObject);
             }
         }
@@ -48,7 +31,7 @@ public class PUScalePadUp : MonoBehaviour
 
     void Update() {
         timer += Time.deltaTime;
-        if (timer >= 5)
+        if (timer >= manager.DeleteInterval)
         {
             manager.RemovePowerUp(gameObject);
         }

@@ -11,8 +11,10 @@ public class PUSpeedUpController : MonoBehaviour
     private float timer;
     
     void OnTriggerEnter2D(Collider2D other) {
-        if (other == ball)
+        if (other == ball && !manager.activationBallSpeed)
         {
+            manager.activationBallSpeed = true;
+            manager.ballMagnitude = magnitude;
             ball.GetComponent<GerakanBola>().ActivationPUSpeedUp(magnitude);
             manager.RemovePowerUp(gameObject);
         }

@@ -53,4 +53,8 @@ public class GerakanBola : MonoBehaviour
     public void ActivationPUSpeedUp(float magnitude){
         rig.velocity *= magnitude;
     }
+
+    public void DeactivationPUSpeedUp(float magnitude){
+        rig.velocity /= magnitude;
+    }
 }

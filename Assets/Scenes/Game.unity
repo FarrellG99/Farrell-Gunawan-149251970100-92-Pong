@@ -177,10 +177,15 @@ MonoBehaviour:
   - {fileID: 1846453464}
   - {fileID: 1572748922}
   - {fileID: 1010625255}
-  doneleftScale: 0
-  donerightScale: 0
-  doneleftSpeed: 0
-  donerightSpeed: 0
+  ball: {fileID: 1123831178}
+  ballMagnitude: 0
+  activationBallSpeed: 0
+  padKiri: {fileID: 677779582}
+  padKanan: {fileID: 1081865018}
+  activationScaleUpPadLeft: 0
+  activationSpeedUpPadLeft: 0
+  activationScaleUpPadRight: 0
+  activationSpeedUpPadRight: 0
   DeleteInterval: 5
 --- !u!1 &276298116
 GameObject:
@@ -809,6 +814,7 @@ MonoBehaviour:
   speed: 10
   upKey: 119
   downKey: 115
+  timer: 0
 --- !u!50 &677779586
 Rigidbody2D:
   serializedVersion: 4
@@ -1420,8 +1426,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081865018}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.5, y: 0, z: 2}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.500001, y: 0, z: 2}
   m_LocalScale: {x: 0.5, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1442,6 +1448,7 @@ MonoBehaviour:
   speed: 10
   upKey: 273
   downKey: 274
+  timer: 0
 --- !u!50 &1081865022
 Rigidbody2D:
   serializedVersion: 4
@@ -1586,7 +1593,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecf5274a5b95da54bb8c95135dbea43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: -10, y: 0}
+  speed: {x: -11, y: 0}
   resetPosition: {x: 0, y: 0, z: 2}
   startSpeed: {x: 0, y: 0}
   isLeft: 0
@@ -1956,8 +1963,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 156954712}
   bola: {fileID: 1123831183}
-  padKiri: {fileID: 677779582}
-  padKanan: {fileID: 1081865018}
   bolaa: {fileID: 1123831181}
 --- !u!1 &1591377829
 GameObject:

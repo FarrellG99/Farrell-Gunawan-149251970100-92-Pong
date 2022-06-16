@@ -16,29 +16,16 @@ public class PUSpeedPadUp : MonoBehaviour
         if (other == bola)
         {
             //donleft dan doneright digunakan untuk menghentikan penambahan dan mengembalikan value seperti semula pada paddle guna untuk memberikan gameplay yang lebih playable
-            if (bolaa.isLeft && !manager.doneleftSpeed)
+            if (bolaa.isLeft && !manager.activationSpeedUpPadLeft)
             {
-                manager.doneleftSpeed = true;
-                padKiri.GetComponent<PaddleController>().SpeedUpPad();
+                manager.activationSpeedUpPadLeft = true;
+                manager.padKiri.GetComponent<PaddleController>().SpeedUpPad();
                 manager.RemovePowerUp(gameObject);
             }
-            else if (bolaa.isLeft && manager.doneleftSpeed)
+            if (!bolaa.isLeft && !manager.activationSpeedUpPadRight)
             {
-                manager.doneleftSpeed = false;
-                padKiri.GetComponent<PaddleController>().ResetSpeedPad();
-                manager.RemovePowerUp(gameObject);
-            }
-            
-            else if (!bolaa.isLeft && !manager.donerightSpeed)
-            {
-                manager.donerightSpeed = true;
-                padKanan.GetComponent<PaddleController>().SpeedUpPad();
-                manager.RemovePowerUp(gameObject);
-            }
-            else if (!bolaa.isLeft && manager.donerightSpeed)
-            {
-                manager.donerightSpeed = false;
-                padKanan.GetComponent<PaddleController>().ResetSpeedPad();
+                manager.activationSpeedUpPadRight = true;
+                manager.padKanan.GetComponent<PaddleController>().SpeedUpPad();
                 manager.RemovePowerUp(gameObject);
             }
         }
@@ -46,7 +33,7 @@ public class PUSpeedPadUp : MonoBehaviour
 
     void Update() {
         timer += Time.deltaTime;
-        if (timer >= 5)
+        if (timer >= manager.DeleteInterval)
         {
             manager.RemovePowerUp(gameObject);
         }

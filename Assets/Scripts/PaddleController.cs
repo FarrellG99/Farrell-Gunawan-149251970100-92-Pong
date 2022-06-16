@@ -9,6 +9,11 @@ public class PaddleController : MonoBehaviour
     private Rigidbody2D rig;
     public KeyCode upKey;
     public KeyCode downKey;
+
+    
+
+    public float timer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +28,7 @@ public class PaddleController : MonoBehaviour
         if(Input.GetKey(KeyCode.Escape)){
             SceneManager.LoadScene("Main Menu");
         }
+
     }
 
     private Vector2 GetInput(){
@@ -57,5 +63,13 @@ public class PaddleController : MonoBehaviour
 
     public void ResetSpeedPad(){
         speed /= 2;
+    }
+
+    public void ScaleUp(GameObject paddle){
+        paddle.transform.localScale += new Vector3(0, paddle.transform.localScale.y, 0);
+    }
+
+    public void ScaleDown(GameObject paddle){
+        paddle.transform.localScale -= new Vector3(0, paddle.transform.localScale.y/2, 0);
     }
 }
